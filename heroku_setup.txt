@@ -1,0 +1,141 @@
+# Getting Started
+https://devcenter.heroku.com/articles/getting-started-with-rails4
+
+# Create an account on Heroku
+tdyer1+2@gmail.com
+
+# This will send you a confirmation email
+# Check for this and activate your account
+pwd is ????
+
+# Download and install Heroku Toolbelt
+https://toolbelt.heroku.com/
+
+# cd into your rails app
+$ cd wdi_4_rails_demo_heroku
+
+$ heroku login
+# enter credentials
+
+# Choose your public key to use with heroku
+# You should have a private/public key that was setup for github
+Found the following SSH public keys:
+1) ga_mbp_rsa.pub
+2) id_rsa.pub
+Which would you like to use with your Heroku account? 2
+2
+Uploading SSH public key /Users/tdyer/.ssh/id_rsa.pub... done
+Authentication successful.
+
+# Create a heroku app for this rails project
+$ heroku create
+
+# This will create a strangely named app on heroku, whats your app
+  name?
+
+# And it will add a remote heroku git repository for your app. 
+$ git remote -v
+heroku	git@heroku.com:agile-badlands-7658.git (fetch)
+heroku	git@heroku.com:agile-badlands-7658.git (push)
+origin	git@github.com:tdyer/wdi_4_rails_hw_tdd_hacker_news.git (fetch)
+origin	git@github.com:tdyer/wdi_4_rails_hw_tdd_hacker_news.git (push)
+
+# push you code to the remote heroku repo/app
+$ git push heroku master
+
+# Lot's of output here!!
+
+- Compiles Ruby and Rails on the remote app "server"
+
+- Runs bundle install
+- Warning about old versions of ruby (safely ignored here)
+
+- Asset pipleline setup (more on this later)
+
+- Warning that you haven't explicitly identified the ruby version in
+  the Gemfile. See referenced URL later. (No problem, keep going)
+
+- Using the webrick server because there was no procfile found in the
+  repo, (more later on this). Webrick is a very slow web server, do
+  NOT use in production. (We'll fix this later)
+
+# Run remote migrations and seed the DB on heroku
+$ heroku run rake db:migrate
+$ heroku run rake db:seed
+
+# Restart the heroku app
+$ heroku restart
+
+# Lets get some info about ALL heroku apps
+heroku apps:info 
+
+# Lets get some info about a specific heroku app.
+heroku apps:info --app agile-badlands-7658
+
+# Lets open the heroku app
+heroku apps:open --app agile-badlands-7658
+
+# Doneso! 
+
+
+###########################################
+# Configuration and Info
+###########################################
+$ heroku config -s
+
+# How to change the configuration
+heroku config --help
+
+# show the logs for heroku, -t option will 'tail', continuously show
+the log.
+$ heroku logs -t
+
+# Process running for your heroku application
+$ heroku ps
+
+# Show all your releases, when you've deployed to heroku
+$ heroku releases
+
+# Run bash on heroku
+$ heroku run bash
+
+# Files create in Heroku are ephemeral, they don't last between
+# restarts of you app. Can't count on them being around.
+# run bash on heroku
+# touch happy.txt; echo 'is happy' > happy.txt
+# cat happy.txt
+# Ctrl-D to get out of heroku bash shell
+# login in again
+# ls -l 
+# happy.txt is missing!!
+###########################################
+# Heroku Postgres general info
+###########################################
+https://devcenter.heroku.com/articles/heroku-postgresql#using-the-cli
+
+# show plan, connections, pg version, data size, tables
+heroku pg:info
+
+# get a psql command for heroku db
+heroku pg:psql
+
+# for a specific DB, found by $ heroku config
+heroku pg:psql HEROKU_POSTGRESQL_OLIVE_URL
+
+# get DB credentials
+heroku pg:credentials HEROKU_POSTGRESQL_OLIVE_URL
+
+########################
+Heroku DB backup/restore
+########################
+
+# Heroku PGbackups
+https://devcenter.heroku.com/articles/pgbackups#importing_from_a_backup
+
+# add the pgbackups addon (ONLY DONE ONCE PER APP!!)
+heroku addons:add pgbackups
+
+# Add a Procfile and use a better web server than webrick, (puma,
+  unicorn, ...)
+
+

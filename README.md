@@ -1,195 +1,132 @@
-## Authentication
+# Using Heroku
 
-We are going to add authentication to a Rails app. Authentication is sometimes called _login_ but it typically has more features than logging users in. In this lesson we are going to also look at user registration and some more features that typically relate to authentication.
+## Setup
 
-We're going to use the Devise gem to implement authentication. Devise is one, of many, ways to implement authentication in Rails. 
+[Getting Started with Rails 4](https://devcenter.heroku.com/articles/getting-started-with-rails4)
+
+Create an account on heroku. This will send you an activation email. Activate your account.
+
+	https://www.heroku.com
+
+### Download and install Heroku Toolbelt
+[Heroku Toolbelt](https://toolbelt.heroku.com/)  
+This will install the 'heroku' command on your computer.  
+	`heroku --help`
+
+### Change Directory into your rails app  
+	cd wdi_4_rails_demo_heroku
+
+### Heroku Login
+ 	heroku login
+ 	
+This will ask you to choose a public key to use for heroku. Choose one, _you should have one that used with github_.
+
+### Create a heroku app for this rails project  
+	heroku create  
+
+This will create a _strangely_ named app. What's yours?
+
+And it will add heroku as a remote git repository.  
+	`git remote -v`  
+	heroku  git@heroku.com:agile-badlands-7658.git (fetch)  
+heroku  git@heroku.com:agile-badlands-7658.git (push)  
+origin  git@github.com:tdyer/wdi_4_rails_hw_tdd_hacker_news.git (fetch)  
+origin  git@github.com:tdyer/wdi_4_rails_hw_tdd_hacker_news.git (push)  
+
+### Push you code up to Heroku
+	git push heroku master  
 
 
-## Authentication is NOT Authorization
-A _very_ typical miscomprehension is that login/authentication is the same as authorization.
+__Lot's of output here!!__
 
-Authentication is the ability to determine the indenity of someone based on a set of credentials such as a username, email and a password.
+- Compiles Ruby and Rails on the remote app "server"
 
-Authorization is allowing/restricting or constraining some set of behavior or operations based on the "role" being played by a user. Typically, this is done using Roles as in Role Base Authorization Control, (RBAC). 
+- Runs bundle install
+- Warning about old versions of ruby (safely ignored here)
 
+- Asset pipleline setup (more on this later)
 
-### Setup RSpec 
-	`rails g rspec:install`
+- Warning that you haven't explicitly identified the ruby version in
+  the Gemfile. See referenced URL later. (No problem, keep going)
 
-## Devise
-### Add gem
+- Using the webrick server because there was no procfile found in the
+  repo, (more later on this). Webrick is a very slow web server, do
+  NOT use in production. (We'll fix this later)
 
-* Add the devise gem to the Gemfile  
-	`gem 'devise'`
+### Run remote migrations and seed the DB on heroku
+
+	heroku run rake db:migrate
+	heroku run rake db:seed
+
+### Restart the heroku app
+	heroku restart
 	
-* Install the gem with Bundler  
-	`bundle install`
+### Lets get some info about ALL heroku apps
+	heroku apps:info
 
-### Install/Setup
-* Setup Devise in your app. Follow the directions in the install.  
-	`rails g devise:install`
-
-* Add flash handing to the Layout, above the yield
-<code>
-<% flash.each do |name, msg| %>  
-  <% if msg.is_a?(String) %>  
-    <%= content_tag :div, msg, :class => "flash_#{name}" %>  
-  <% end %>  
-<% end %>  
-</code>
-
-* Copy the Devise views to your app.
-
-
-
-#### Lets look at the i18n YAML internationalization file that will define messages for Devise.
-open config/locales/devise.en.yml
-
-#### Lets Look at the initialization file.
-open config/initializers/devise.rb
-
-### Generate a User model 	
-	`rails generate devise User`
+#### Lets get some info about a specific heroku app.
+	heroku apps:info --app agile-badlands-7658
 	
-#### Look at the routes.rb file and run rake routes.
-You should see many new routes. And they reference controllers that are __NOT__
-in your app? Where are they?
+### Lets open the heroku app
+	heroku apps:open --app agile-badlands-7658
 
 
-#### User Sessions
+__The above info and more is in [heroku_setup.txt](heroku_setup.txt)__
+
+## Configuration and Info  
+	heroku config -s
+
+### Changing the configuration
+	heroku config --help
+
+### Show the logs 
+
+-t option will 'tail', continuously show the log.  
+
+	heroku logs -t
+
+### Process running for your heroku application
+	heroku ps
+
+### Show all your releases.
+
+Each time you deploy to heroku you are creating a "release". To see all the releases.  
+
+	heroku releases  
+
+#### Runnin bash on heroku
+$ heroku run bash
 
 
-A User will have a "session" with the application after they have successfully
-logged in. This session will typically last for a specific period of time in the user is inactive.
+## Ephemeral Filesystem.
+Heroku provides a ephemeral filesystem. This is a serious limitation of heroku. If you save something, like an uploaded image file, it will disappear when your app is restarted or redeployed.
 
-The session is a hash that contains a very _limited_ set of data about a user that will be shared between the client/browser and the server. 
+The typical workaround is to save files in cloud storage such as [Amazon S3](https://aws.amazon.com/s3/).
 
-For example, the session will have the current user's id. This is typically the primary key for that user in the users table.
+#### run bash on heroku
+	heroku run bash  
+	touch happy.txt; echo 'is happy' > happy.txt  
+	cat happy.txt
+	Ctrl-D to get out of heroku bash shell
+### run bash again
+	 ls -l
+	 happy.txt is missing!!
+	 
+	 
+## Postgres on Heroku
 
-The session is stored in a cookie that is kept and maintained by the browser.
+[Using the CLI](https://devcenter.heroku.com/articles/heroku-postgresql#using-the-cli)
 
+Show the heroku plan, connections, pg version, data size, tables.  
 
-Devise provides a way to handle Session resources. Running rake routes will show you what Devise provides to manage a user's session.
+   `heroku pg:info`
 
-_Show me the form to login and create a session_
- <code> new_user_session GET    /users/sign_in(.:format)       devise/sessions#new  </code>  
+Start Get a psql command for heroku db  
+	`heroku pg:psql`
 
-_Create a session for this logged in user_
-<code>  user_session POST   /users/sign_in(.:format)       devise/sessions#create</code>
+For a specific DB, found by $ heroku config. 
 
-_Delete the session for a user_
-<code> destroy_user_session DELETE /users/sign_out(.:format)      devise/sessions#destroy</code>
+	`heroku pg:psql HEROKU_POSTGRESQL_OLIVE_URL`
 
-So, we now have a set of routes a controller and a login form for the Session.
-
-#### User registration
-Devise can manage the registration of users. Which types of features an application can use can be configured by Devise.
-
-<table>
-<thead>
-<th>URL Helper</th><th>HTTP Method</th><th>Path</th><th>Controller#Action</th>
-</thead>
-<tbody>
-<tr><<td>cancel_user_registration</td><td>GET</td><td>/users/cancel(.:format)</td><td>devise/registrations#cancel</td></tr>
-
-<tr><td>user_registration</td><td>POST</td><td>/users(.:format)</td><td>devise/registrations#create</td></tr>
-
-<tr><td>new_user_registration</td><td>GET</td><td>/users/sign_up(.:format)</td><td>devise/registrations#new</td></tr>
-
-<tr><td>edit_user_registration</td><td>GET</td><td>/users/edit(.:format)</td><td>devise/registrations#edit</td></tr>
-
-<tr><td></td><td>PATCH</td><td>/users(.:format)</td><td>devise/registrations#update</td></tr>
-
-<tr><td></td><td>PUT</td><td>/users(.:format)</td><td>devise/registrations#update</td></tr>
-
-<tr><td></td><td>DELETE</td><td>/users(.:format)</td><td>devise/registrations#destroy</td></tr>
-</tbody>
-</table>
-
-#### Lets Look at the migrations file.
-open db/migrate/...
-
-Notice that some fields are commented out. This is because they are _ONLY_ needed by certain devise models.
-
-In this case confirmation and lockout features of Devise are not being used. But, they may be in the future. If so, create migrations to add these attributes.
-
-#### Lets Look at the User model.
-We're using a couple of devise modules. See Devise Modules below.
-
-## Startup the app.
-	`rails s -p 3333`
-
-
-## Add login/logout links to Layout
- <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
-  </div>
-
-
-
-## Only allow logged in users the ability to create, update or delete users.
-In the Articles controller.
-	`before_action :authenticate_user!, except: [:index,:show]`
-	
-Now try to update an article. You should not be allowed!
-
-## Create some Users
-In the seed.rb file add.
-
-<code>User.delete_all
-puts 'Creating Users'  
-User.create!(email: 'joe@example.com', password: 'password')  
-User.create!(email: 'jill@example.com', password: 'password')  
-User.create!(email: 'tom@example.com', password: 'password')  
-</code>
-
-## Add a ManageArticle relationship
- `r g model ManagedArticle user:belongs_to article:belongs_to role`
- 
- In the User model, user.rb add.  
-  <code>
-  	has_many :managed_articles  
-	has_many :articles, through: :managed_articles  
-  </code>
-
-In the seed file add.  
-<code> 
-joe = User.first  
-3.times do |i|  
-  joe.articles.create!(title: "joes_article_#{i}", content: Faker::Lorem.paragraphs(i % 5).join(' '), category: Article::CATEGORIES.sample, status: Article::STATUSES.sample)  
-end  
-</code>
-
-### Allow users the ability see their managed articles.
-Add the below to the Article index action.  
-<code>
- if current_user  
-      @articles = current_user.articles  
-    else  
-      @articles = Article.all  
-    end  
-</code>	
-## Add the Devise views to your app.
-	`rails g devise:views`
-	
-This will copy the views that are typically in the Devise gem to your app. Then you can modify these views as needed.
-
-Lets look at a couple of these.
-  
-
-## Devise Modules
-* database-authenticatable  	Handles authentication of a user, as well as password encryption.
-* confirmable  	Adds the ability to require email confirmation of user accounts.
-*lockable  	Can lock an account after n number of failed login attempts. recoverable Provides password reset functionality.
-* registerable  	Alters user sign up to be handled in a registration process, along with account management.* rememberable  	Provides remember me functionality. 
-* timeoutable  	Allows sessions to be expired in a configurable time frame.* trackable:	Stores login counts, timestamps, and IP addresses.* validatable	Adds customizable validations to email and password.* omniauthable	Adds Omniauth2 support
-
-### References
-
-
+To get DB credentials
+	`heroku pg:credentials HEROKU_POSTGRESQL_OLIVE_URL`
