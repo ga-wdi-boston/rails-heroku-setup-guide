@@ -1,0 +1,74 @@
+#########################################
+# https://github.com/github/gitignore/blob/master/Ruby.gitignore
+#########################################
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+
+#########################################
+# https://raw2.github.com/github/gitignore/master/Rails.gitignore
+#########################################
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/public/system
+/coverage/
+/spec/tmp
+**.orig
+rerun.txt
+pickle-email-*.html
+# config/secrets.yml
+
+## Environment normalisation:
+/.bundle
+/vendor/bundle
+
+# these should all be checked in to normalise the environment:
+# Gemfile.lock, .ruby-version, .ruby-gemset
+
+# unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
+.rvmrc
+
+#########################################
+# Extras, not from github
+#########################################
+.env
+.DS_Store
+Desktop.ini
+Thumbs.db
+.Spotlight-V100
+.Trashes
+/log/*.log
+
+# Emacs temp files
+*~
+*#*
+
+# Ctags
+TAGS
+tags
+
+# VI temp files
+*.swp
+*.swo
+*.log
