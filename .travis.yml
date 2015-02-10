@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+- 2.2.0
+script: bundle exec rspec spec
+notifications:
+  webhooks: http://gradingwizard.herokuapp.com/travisreports
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test' -U postgres
+- bin/rake db:migrate RAILS_ENV=test
+addons:
+  postgresql: '9.3'
