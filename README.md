@@ -130,11 +130,11 @@ As an example, try running the following commands:
 
 `heroku run bash`
 
-`heroku run touch happy.txt; echo 'is happy' > happy.txt`  
+`$ touch happy.txt; echo 'is happy' > happy.txt`  
 
-`heroku run cat happy.txt`
+`$ cat happy.txt`
 
-Then, hit Ctrl-D to get out of heroku bash shell. If you re-open the shell and run `heroku ls -l`, `happy.txt` will be missing!
+Then, hit Ctrl-D to get out of heroku bash shell. If you re-open the shell and run `ls -l`, `happy.txt` will be missing!
 
 The typical workaround is to save files in cloud storage such as [Amazon S3](https://aws.amazon.com/s3/); more on this in the near future.
 
