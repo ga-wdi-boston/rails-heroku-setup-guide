@@ -125,6 +125,14 @@ Now that we've tested our code locally, let's push our code up to the remote rep
 
 `heroku restart && heroku open`
 
+### At any point you can change you apps name with the following command:
+
+`heroku apps:rename newname`
+
+Your app will become immediately available at it's new subdomain:
+
+`newname.herokuapp.com`
+
 
 ## For Reference
 ### Heroku Commands
