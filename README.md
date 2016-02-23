@@ -1,5 +1,19 @@
+![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
+
 # Deploying to Heroku
 You've learned a lot about how to build a Rails application over the last few weeks. Now let's 'go public' and share our apps with the world!
+
+## Instructions
+
+Fork and follow along.
+
+## Objectives
+
+By the end of this lesson, students should be able to:
+
+- Create a heroku app from the command line
+- Push the latest code to heroku
+- Migrate the production database
 
 ## Set Up A Heroku Account (Do Once)
 ### Heroku.com
