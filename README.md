@@ -168,3 +168,8 @@ The typical workaround is to save files in cloud storage such as [Amazon S3](htt
 
 ### Additional Reading
 - [https://devcenter.heroku.com/categories/command-line](https://devcenter.heroku.com/categories/command-line)
+
+## [License](LICENSE)
+
+Source code distributed under the MIT license. Text and other assets copyright
+General Assembly, Inc., all rights reserved.
