@@ -51,7 +51,7 @@ follow these steps:
     match the version referenced in `.ruby-version`, if that file exists.
 -   [ ] `bundle install` to make sure `Gemfile.lock` is up-to-date.
 -   [ ] Push the latest code to heroku (`git push heroku master`)
--   [ ] Migrate the production database (`herok run rake db:migrate`)
+-   [ ] Migrate the production database (`heroku run rake db:migrate`)
 -   [ ] If you have seeds or examples, you may wish to run those with `heroku
     run` as well.
 
