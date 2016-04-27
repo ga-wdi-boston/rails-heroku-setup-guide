@@ -12,48 +12,42 @@ weeks. Now let's 'go public' and share our apps with the world!
 
 ## Objectives
 
-By the end of this, developers should be able to:
-
--   Create a heroku app from the command line
--   Push the latest code to heroku
+-   Create a Heroku app from the command line
+-   Push the latest code to Heroku
 -   Migrate the production database
 
-## Preparation
+## Getting Set Up
 
-1.  No forking is necessary for this talk.
+Before you can begin deploying your applications to Heroku, there are some
+ things you'll need to do first.
 
-## Set Up A Heroku Account
+1.  **Create a Heroku account**, at [https://www.heroku.com](https://www.heroku.com).
+    You will be sent an activation email, so be sure to check your inbox so that
+    you can activate your account.
 
-The first step is creating an account on Heroku, which you can do at
-[https://www.heroku.com](https://www.heroku.com). You will be sent an activation
-email, so be sure to activate your account.
+1.  **Download and install the Heroku Toolbelt**, found [here](https://toolbelt.heroku.com/).
 
-## Install Heroku Toolbelt
-
-The Heroku Toolbelt can be found [here](https://toolbelt.heroku.com/). Download
-and install it.
-
-## Login To Heroku
-
-Run `heroku login`; you should be prompted for the credentials for your Heroku
-account. Once you log in, if you're prompted to add the credentials to your
-keychain, say yes.
+1.  **Log into Heroku** by running `heroku login` from the console and providing
+    your Heroku credentials when asked. Once you log in, if you're prompted
+    to add these credentials to your keychain, say yes.
 
 ## Deploying to Heroku
 
-Now you're setup to use heroku. Every time you want to deploy a new application,
-follow these steps:
+Now you're set up to use Heroku. To deploy a new application
+ to Heroku:
 
--   [ ] Create a heroku app from the command line (`heroku create`)
--   [ ] Add the `rails_12factor` gem to the production group in your Gemfile, if
-    it doesn't already exist.
+-   [ ] Run `heroku create` in the command line to create a new (blank) app on
+ Heroku.
+-   [ ] On your production branch (i.e. `master`), add the `rails_12factor` gem
+to the `production` section of your Gemfile if it doesn't already exist there.
 -   [ ] Make sure you have specified a ruby version in your Gemfile. It should
     match the version referenced in `.ruby-version`, if that file exists.
--   [ ] `bundle install` to make sure `Gemfile.lock` is up-to-date.
--   [ ] Push the latest code to heroku (`git push heroku master`)
--   [ ] Migrate the production database (`herok run rake db:migrate`)
--   [ ] If you have seeds or examples, you may wish to run those with `heroku
-    run` as well.
+-   [ ] Run `bundle install` to download `rails_12facter` and ensure that
+`Gemfile.lock` is up-to-date.
+-   [ ] Push your latest code to Heroku (`git push heroku master`)
+-   [ ] Tell Heroku to run your migration files (`heroku run rake db:migrate`).
+If you have any other rake tasks that need to run (e.g. `rake db:seed`), run
+those with `heroku run` as well.
 
 Let's look at each of these steps in detail.
 
@@ -142,7 +136,7 @@ You'll probably see something like this:
 
 That's normal, **unless** you have defined a root route.
 
-## Changing Your App Name
+### Change Your App's Name
 
 At any point, you can pick a new name for your app. It must be unique across
 all apps deployed to heroku.
@@ -175,8 +169,8 @@ are some of the more common ones.
 ## WARNING: Ephemeral Filesystem
 
 One serious limitation of Heroku is that it provides an 'ephemeral filesystem';
-if you save something, like an uploaded image file, it will disappear when your
-app is restarted or redeployed.
+in other words, if you try to save a new file inside the repo (e.g. an uploaded
+image file), it will disappear when your app is restarted or redeployed.
 
 As an example, try running the following commands:
 
