@@ -136,6 +136,52 @@ You'll probably see something like this:
 
 That's normal, **unless** you have defined a root route.
 
+## OR you'll probably see something like this
+
+<img width="599" alt="herokuapp_png_1_366x768_pixels" src="https://i.gyazo.com/46a08819fc5c636ea24178c8b12a406c.png">
+
+### That's okay. Don't Panic. You've got this
+
+Paste the following into your terminal:
+
+```sh
+git add config/secrets.yml -f
+```
+
+Press enter. Good job!
+
+```sh
+git add .
+
+git commit
+```
+
+#### Now you need to push these changes
+
+Push them to your master and then heroku
+
+```sh
+git push origin master
+```
+
+```sh
+git push heroku master
+```
+
+<img width="400" alt="herokuapp_png_1_366x768_pixels" src="http://www.thehinzadventures.com/wp-content/uploads/2015/03/54843046.jpg">
+
+### You're almost there
+
+enter the following into your terminal, one after the other:
+
+```sh
+heroku config:set SECRET_TOKEN=$(rake secret)
+```
+
+```sh
+heroku config:set SECRET_KEY_BASE=$(rake secret)
+```
+
 ### Change Your App's Name
 
 At any point, you can pick a new name for your app. It must be unique across
