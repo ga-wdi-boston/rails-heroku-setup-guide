@@ -151,8 +151,6 @@ git add config/secrets.yml -f
 Press enter. Good job!
 
 ```sh
-git add .
-
 git commit
 ```
 
