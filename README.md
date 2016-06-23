@@ -84,7 +84,7 @@ you don't).
 ```diff
 # Gemfile
 source 'https://rubygems.org'
-+ ruby '2.2.4'
++ ruby '2.3.0'
 ```
 
 Every time you edit your `Gemfile`, you must run `bundle install` afterward.
