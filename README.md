@@ -102,10 +102,6 @@ You'll probably see something like this:
 
 That's normal, **unless** you have defined a root route.
 
-## OR you'll see something like this
-
-<img width="599" alt="herokuapp_png_1_366x768_pixels" src="https://i.gyazo.com/46a08819fc5c636ea24178c8b12a406c.png">
-
 ### Change Your App's Name (optional)
 
 If you wish you can rename your app at any time. It must be unique across all
