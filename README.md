@@ -119,7 +119,7 @@ Your app will become immediately available at it's new subdomain,
 A full list of Heroku commands can be access by running `heroku --help`; below
 are some of the more common ones.
 
-|                Behavior                |                                                 Commands                                                 |
+|                Commands                |                                                 Behavior                                                 |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 |           `heroku apps:info`           |                                  Get info about ALL of our Heroku apps.                                  |
 | `heroku apps:info --app {name_of_app}` |                                  Get info about a specific Heroku app.                                   |
@@ -131,6 +131,9 @@ are some of the more common ones.
 |            `heroku pg:info`            | Access Postgres from within Heroku and show the heroku plan, connections, pg version, data size, tables. |
 |            `heroku pg:psql`            |                                      ... and open a `psql` console.                                      |
 |            `heroku run ...`            |                                    Run a program from within Heroku.                                     |
+|            `heroku help`            |                                    Displays a heroku CLI usage summary.                                     |
+|            COMMANDZZ            |                                    BEHAVIORZZ                                     |
+|            COMMANDZZ            |                                    BEHAVIORZZ                                     |
 
 ## WARNING: Ephemeral Filesystem.
 
