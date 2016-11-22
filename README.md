@@ -87,6 +87,22 @@ heroku run rake db:seed
 heroku run rake db:examples
 ```
 
+### Set your Secrets
+
+Set your environmental variables in your heroku app.
+
+```sh
+heroku config:set SECRET_KEY_BASE=$(rake secret)
+```
+
+```sh
+heroku config:set SECRET_TOKEN=$(rake secret)
+```
+
+```sh
+heroku config:set CLIENT_ORIGIN=https://yourgithubname.github.io
+```
+
 ### Check Your Work
 
 Restart your application and check it out in the browser.
@@ -130,8 +146,8 @@ are some of the more common ones.
 |            `heroku pg:info`            | Access Postgres from within Heroku and show the heroku plan, connections, pg version, data size, tables. |
 |            `heroku pg:psql`            |                                      ... and open a `psql` console.                                      |
 |            `heroku run ...`            |                                    Run a program from within Heroku.                                     |
-|            `heroku config:set SECRET_KEY_BASE=$(rake secret)`            |                                    Set Secret Key                                     |
 |            `heroku config`             |                           Environmental variables in your current Heroku app.                            |
+|            `heroku config:set SECRET_KEY_BASE=$(rake secret)`            |                                    Set Secret Key                                     |
 |            `heroku config:set SECRET_TOKEN=$(rake secret)`            |                                    Set TOKEN                                     |
 |            `heroku config:set CLIENT_ORIGIN=https://yourgithubname.github.io`            |                                    Set CLIENT_ORIGIN                                     |
 |            `heroku apps:rename newname (optional)`            |                                    Rename heroku app name (entirely optional)                                     |
@@ -164,7 +180,7 @@ S3](https://aws.amazon.com/s3/); more on this in the near future.
 
 ## Troubleshooting
 
-These are the commands required for deploying to heroku with rails. If your heroku deployment isn't working as expected, review these steps carefully. 
+These are the commands required for deploying to heroku with rails. If your heroku deployment isn't working as expected, review these steps carefully.
 - `heroku create`
 - `git push heroku master`
 - `heroku run rake db:migrate`
