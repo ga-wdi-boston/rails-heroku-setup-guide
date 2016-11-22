@@ -124,16 +124,21 @@ are some of the more common ones.
 |           `heroku apps:info`           |                                  Get info about ALL of our Heroku apps.                                  |
 | `heroku apps:info --app {name_of_app}` |                                  Get info about a specific Heroku app.                                   |
 | `heroku apps:open --app {name_of_app}` |            Open any given Heroku app <br> (other than the one we're currently working with.)             |
-|            `heroku config`             |                           Environmental variables in your current Heroku app.                            |
 |             `heroku logs`              |                                   Logs from the currently running app.                                   |
 |              `heroku ps`               |                              Processes running in your heroku application.                               |
 |           `heroku releases`            |      Each time you deploy to heroku you are creating a "release". This command shows all releases.       |
 |            `heroku pg:info`            | Access Postgres from within Heroku and show the heroku plan, connections, pg version, data size, tables. |
 |            `heroku pg:psql`            |                                      ... and open a `psql` console.                                      |
 |            `heroku run ...`            |                                    Run a program from within Heroku.                                     |
-|            `heroku help`            |                                    Displays a heroku CLI usage summary.                                     |
-|            COMMANDZZ            |                                    BEHAVIORZZ                                     |
-|            COMMANDZZ            |                                    BEHAVIORZZ                                     |
+|            `heroku config:set SECRET_KEY_BASE=$(rake secret)`            |                                    Set Secret Key                                     |
+|            `heroku config`             |                           Environmental variables in your current Heroku app.                            |
+|            `heroku config:set SECRET_TOKEN=$(rake secret)`            |                                    Set TOKEN                                     |
+|            `heroku config:set CLIENT_ORIGIN=https://yourgithubname.github.io`            |                                    Set CLIENT_ORIGIN                                     |
+|            `heroku apps:rename newname (optional)`            |                                    Rename heroku app name (entirely optional)                                     |
+|            `heroku restart`            |                                    restart heroku                                     |
+|            `heroku open`            |                                    Open your heroku app in default browser                                     |
+|            `heroku --help`            |                                    Displays a heroku CLI usage summary.                                     |
+
 
 ## WARNING: Ephemeral Filesystem.
 
