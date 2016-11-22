@@ -9,7 +9,7 @@ weeks. Now let's 'go public' and share our apps with the world!
 
 -   [ga-wdi-boston/rails-api](https://github.com/ga-wdi-boston/rails-api)
 -   [ga-wdi-boston/rails-activerecord-crud](https://github.com/ga-wdi-boston/rails-activerecord-crud)
-
+-   This guide assumes you have followed [these installation instructions](https://github.com/ga-wdi-boston/rails-api-template#installation) unequivocally.
 ## Objectives
 
 -   Create a Heroku app from the command line
@@ -161,6 +161,20 @@ The typical workaround is to save files in cloud storage such as [Amazon
 S3](https://aws.amazon.com/s3/); more on this in the near future.
 
 <img width="400" alt="herokuapp_png_1_366x768_pixels" src="http://www.thehinzadventures.com/wp-content/uploads/2015/03/54843046.jpg">
+
+## Troubleshooting
+
+These are the commands required for deploying to heroku with rails. If your heroku deployment isn't working as expected, review these steps carefully. 
+- `heroku create`
+- `git push heroku master`
+- `heroku run rake db:migrate`
+- `heroku run rake db:seed`
+- `heroku config:set SECRET_KEY_BASE=$(rake secret)`
+- `heroku config:set SECRET_TOKEN=$(rake secret)`
+- `heroku config:set CLIENT_ORIGIN=https://yourgithubname.github.io`
+- `heroku apps:rename newname` (optional)
+- `heroku restart`
+- `heroku open`
 
 ## Additional Resources
 
