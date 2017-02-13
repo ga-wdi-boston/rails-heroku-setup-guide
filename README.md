@@ -195,7 +195,7 @@ These are the commands required for deploying to heroku with rails. If your hero
 ## Additional Resources
 
 -   [Heroku Command Line](https://devcenter.heroku.com/categories/command-line)
--   [Heroku Rails Deployment](https://devcenter.heroku.com/articles/getting-started-with-rails4)
+-   [Heroku Rails Deployment](https://devcenter.heroku.com/articles/getting-started-with-rails5)
 
 ## [License](LICENSE)
 
