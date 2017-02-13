@@ -30,7 +30,7 @@ things you'll need to do first.
     to add these credentials to your keychain, say yes. *You will not be able*
     *to see your password*
 
-## Deploying to Heroku
+## Deploying to Heroku: Checklist
 
 Now you're set up to use Heroku. To deploy a new application
 to Heroku:
@@ -38,9 +38,11 @@ to Heroku:
 -   [ ] Run `heroku create` in the command line in the root of your Rails API to
     create a new (blank) app on Heroku.
 -   [ ] Push your latest code to Heroku (`git push heroku master`)
--   [ ] Tell Heroku to run your migration files (`heroku run rake db:migrate`).
+-   [ ] Update your heroku database by telling Heroku to run your migration files (`heroku run rake db:migrate`).
     If you have any other rake tasks that need to run (e.g. `rake db:seed`), run
     those with `heroku run` as well.
+-   [ ] Set your secrets using Heroku run.
+-   [ ] Check your work by restarting heroku and opening your heroku application.
 
 Let's look at each of these steps in detail.
 
