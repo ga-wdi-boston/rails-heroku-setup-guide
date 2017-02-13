@@ -41,7 +41,8 @@ to Heroku:
 -   [ ] Update your heroku database by telling Heroku to run your migration files (`heroku run rake db:migrate`).
     If you have any other rake tasks that need to run (e.g. `rake db:seed`), run
     those with `heroku run` as well.
--   [ ] Set your secrets using Heroku run.
+-   [ ] Set your secrets. (Either by using the heroku run command [here](#set-your-secrets) or by using the
+heroku app panel in the browser.
 -   [ ] Check your work by restarting heroku and opening your heroku application.
 
 Let's look at each of these steps in detail.
