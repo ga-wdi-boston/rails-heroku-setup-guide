@@ -10,8 +10,10 @@ weeks. Now let's 'go public' and share our apps with the world!
 -   [ga-wdi-boston/rails-api](https://github.com/ga-wdi-boston/rails-api)
 -   [ga-wdi-boston/rails-activerecord-crud](https://github.com/ga-wdi-boston/rails-activerecord-crud)
 -   This guide assumes you have followed [these installation instructions](https://github.com/ga-wdi-boston/rails-api-template#installation) unequivocally.
+
 ## Objectives
 
+-   Create a repository on github for your project.
 -   Create a Heroku app from the command line.
 -   Push the latest code to Heroku.
 -   Migrate the production database.
