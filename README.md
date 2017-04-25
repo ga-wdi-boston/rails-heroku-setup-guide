@@ -17,6 +17,7 @@ weeks. Now let's 'go public' and share our apps with the world!
 -   Create a Heroku app from the command line.
 -   Push the latest code to Heroku.
 -   Migrate the production database.
+-   Open an issue on this repository, with the url to your deployed heroku app.
 
 ## Getting Set Up
 
@@ -135,6 +136,11 @@ heroku apps:rename newname
 
 Your app will become immediately available at it's new subdomain,
 `newname.herokuapp.com`.
+
+### Include deployed URL in an Issue **(REQUIRED)**
+
+1. Open an issue on this repository [here](https://github.com/ga-wdi-boston/rails-heroku-setup-guide/issues/new)
+1. Include the deployed url of your heroku app in the description.
 
 ## Heroku Command Reference
 
