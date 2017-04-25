@@ -10,18 +10,22 @@ weeks. Now let's 'go public' and share our apps with the world!
 -   [ga-wdi-boston/rails-api](https://github.com/ga-wdi-boston/rails-api)
 -   [ga-wdi-boston/rails-activerecord-crud](https://github.com/ga-wdi-boston/rails-activerecord-crud)
 -   This guide assumes you have followed [these installation instructions](https://github.com/ga-wdi-boston/rails-api-template#installation) unequivocally.
+
 ## Objectives
 
--   Create a Heroku app from the command line
--   Push the latest code to Heroku
--   Migrate the production database
+-   Create a repository on github for your project.
+-   Create a Heroku app from the command line.
+-   Push the latest code to Heroku.
+-   Migrate the production database.
+-   Open an issue on this repository, with the url to your deployed heroku app.
 
 ## Getting Set Up
 
 Before you can begin deploying your applications to Heroku, there are some
 things you'll need to do first.
 
-1.  **Create a Heroku account**, at [https://www.heroku.com](https://www.heroku.com).
+1.  **Create a github repository for your project**, at [Create a repo](https://help.github.com/articles/create-a-repo/).
+1.  **Create a Heroku account**, at [Create a Heroku Account](https://www.heroku.com).
     You will be sent an activation email, so be sure to check your inbox so that
     you can activate your account.
 1.  Install the Heroku Command Line Tools: run `brew install heroku`.
@@ -70,7 +74,7 @@ onto `master`. Push your updated `master` to GitHub, then to Heroku.
 git checkout master
 git merge my-feature # merge your working code
 git push # update GitHub
-git push heroku master # udpate heroku
+git push heroku master # update heroku
 ```
 
 ### Update Heroku's Database
@@ -132,6 +136,11 @@ heroku apps:rename newname
 
 Your app will become immediately available at it's new subdomain,
 `newname.herokuapp.com`.
+
+### Share Your App **(REQUIRED)**
+
+1. Open an issue on this repository [here](https://github.com/ga-wdi-boston/rails-heroku-setup-guide/issues/new)
+1. Include the deployed URL of your heroku app in the description.
 
 ## Heroku Command Reference
 
