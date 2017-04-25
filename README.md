@@ -137,10 +137,10 @@ heroku apps:rename newname
 Your app will become immediately available at it's new subdomain,
 `newname.herokuapp.com`.
 
-### Include deployed URL in an Issue **(REQUIRED)**
+### Share Your App **(REQUIRED)**
 
 1. Open an issue on this repository [here](https://github.com/ga-wdi-boston/rails-heroku-setup-guide/issues/new)
-1. Include the deployed url of your heroku app in the description.
+1. Include the deployed URL of your heroku app in the description.
 
 ## Heroku Command Reference
 
