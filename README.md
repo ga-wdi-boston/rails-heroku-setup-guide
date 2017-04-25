@@ -70,7 +70,7 @@ onto `master`. Push your updated `master` to GitHub, then to Heroku.
 git checkout master
 git merge my-feature # merge your working code
 git push # update GitHub
-git push heroku master # udpate heroku
+git push heroku master # update heroku
 ```
 
 ### Update Heroku's Database
