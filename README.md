@@ -12,9 +12,9 @@ weeks. Now let's 'go public' and share our apps with the world!
 -   This guide assumes you have followed [these installation instructions](https://github.com/ga-wdi-boston/rails-api-template#installation) unequivocally.
 ## Objectives
 
--   Create a Heroku app from the command line
--   Push the latest code to Heroku
--   Migrate the production database
+-   Create a Heroku app from the command line.
+-   Push the latest code to Heroku.
+-   Migrate the production database.
 
 ## Getting Set Up
 
